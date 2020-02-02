@@ -5,5 +5,5 @@ sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubun
 apt-get update && apt-get install docker-ce docker-ce-cli containerd.io
 
 # test docker network
-docker create network --driver=bridge --subnet=172.30.0.0/16 test
+docker network create --driver=bridge --subnet=172.30.0.0/16 test
 ip a
