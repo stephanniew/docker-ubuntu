@@ -10,6 +10,12 @@ mkdir -p $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
+# calico
+curl https://docs.projectcalico.org/manifests/calico.yaml -O
+POD_CIDR="172.16.0.0/24" \
+  sed -i -e "s?192.168.0.0/16?$POD_CIDR?g" calico.yaml
+kubectl apply -f calico.yaml
+
 
 # child nodes:
 # (on master:)
